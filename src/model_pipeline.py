@@ -110,9 +110,7 @@ if __name__ == "__main__":
 
     models = build_models()
 
-    print("=" * 60)
     print("TRAIN / TEST PIPELINE")
-    print("=" * 60)
 
     print(f"\nTotal samples: {len(df)}")
     print(f"Training samples: {len(X_train)}")

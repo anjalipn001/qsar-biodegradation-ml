@@ -84,9 +84,7 @@ def clean_dataset(df):
 if __name__ == "__main__":
     df = load_dataset()
 
-    print("=" * 60)
     print("QSAR BIODEGRADATION DATA PREPARATION")
-    print("=" * 60)
 
     print(f"\nOriginal shape: {df.shape}")
 

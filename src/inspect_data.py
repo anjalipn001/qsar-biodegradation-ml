@@ -4,9 +4,7 @@ DATA_PATH = "data/biodeg.csv"
 
 df = pd.read_csv(DATA_PATH, sep=";", header=None)
 
-print("=" * 60)
 print("DATASET OVERVIEW")
-print("=" * 60)
 
 print(f"\nShape: {df.shape}")
 

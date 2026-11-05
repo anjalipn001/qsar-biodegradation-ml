@@ -1,3 +1,5 @@
+import os
+import joblib
 import pandas as pd
 
 from sklearn.metrics import (
@@ -41,14 +43,22 @@ def main():
 
     results = []
 
-    print("=" * 70)
+    os.makedirs("models", exist_ok=True)
+
+    test_data = X_test.copy()
+    test_data["experimental class"] = y_test.values
+    test_data.to_csv("test_data.csv", index=False)
+
+
     print("QSAR BIODEGRADATION - MODEL TRAINING")
-    print("=" * 70)
 
     for model_name, model in models.items():
         print(f"\nTraining {model_name}...")
 
         model.fit(X_train, y_train)
+
+        model_filename = model_name.lower().replace(" ", "_") + ".pkl"
+        joblib.dump(model, f"models/{model_filename}")
 
         metrics = evaluate_model(
             model,
@@ -59,7 +69,7 @@ def main():
         metrics["Model"] = model_name
         results.append(metrics)
 
-        print("Completed.")
+        print(f"Completed. Saved as models/{model_filename}")
 
     results_df = pd.DataFrame(results)
 
@@ -75,9 +85,7 @@ def main():
         ]
     ]
 
-    print("\n" + "=" * 70)
     print("MODEL COMPARISON")
-    print("=" * 70)
 
     print(
         results_df.to_string(
@@ -92,6 +100,7 @@ def main():
     )
 
     print("\nResults saved to model_results.csv")
+    print("Test data saved to test_data.csv")
 
 
 if __name__ == "__main__":
