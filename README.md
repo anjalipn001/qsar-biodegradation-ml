@@ -165,7 +165,7 @@ The application provides:
 The uploaded test dataset is evaluated using the selected **pre-trained model**. The application does not retrain the model using the uploaded test data.
 
 **Streamlit App:**
-*https://qsar-biodegradation.streamlit.app/ *
+https://qsar-biodegradation.streamlit.app/ 
 
 ---
 
